@@ -1,0 +1,70 @@
+@model DeliveryTimePrediction.Models.RegisterModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Delivery Estimator</title>
+    <link rel="stylesheet" href="~/css/auth.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="bg-blob blob-1"></div>
+
+    <div class="auth-container">
+        <div class="auth-header">
+            <h1>Create Account</h1>
+            <p>Set up your account to get started</p>
+        </div>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="error-message">
+                @ViewBag.Error
+            </div>
+        }
+
+        <form asp-action="Register" method="post">
+            <div class="form-group">
+                <label asp-for="Email">Email Address</label>
+                <div class="input-wrapper">
+                    <input asp-for="Email" type="email" placeholder="operator@system.com" autocomplete="email" required />
+                </div>
+                <span asp-validation-for="Email" class="validation-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password">Password</label>
+                <div class="input-wrapper">
+                    <input asp-for="Password" type="password" placeholder="••••••••" required />
+                </div>
+                <span asp-validation-for="Password" class="validation-error"></span>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 2rem;">
+                <label asp-for="ConfirmPassword">Confirm Password</label>
+                <div class="input-wrapper">
+                    <input asp-for="ConfirmPassword" type="password" placeholder="••••••••" required />
+                </div>
+                <span asp-validation-for="ConfirmPassword" class="validation-error"></span>
+            </div>
+
+            <button type="submit" class="btn-submit">Register Account</button>
+        </form>
+
+        <div class="auth-footer">
+            <p>Already have an account? <a asp-action="Login">Login here</a></p>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
